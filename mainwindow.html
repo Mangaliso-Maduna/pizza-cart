@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="//unpkg.com/alpinejs" defer></script>
+</head>
+<body>
+    <div class="container"
+
+        x-data="{showCart: false, 
+            hideCart:false,
+            paymentAmount:0.00,
+            paymentMessage:'',
+            mediumPizzaTotal:0.00,
+            buyMediumPizza(){
+                this.mediumPizzaTotal+=68.99
+                this.mediumPizzaQty+=1
+            },
+            dropMediumPizza(){
+                if(this.mediumPizzaQty>0){
+                    this.mediumPizzaTotal-=68.99
+                    this.mediumPizzaQty-=1
+                }
+                
+            },
+            mediumPizzaQty:0,
+            largePizzaTotal:0.00,
+            buyLargePizza(){
+                this.largePizzaTotal+=78.99
+                this.largePizzaQty+=1
+            },
+            dropLargePizza(){
+                if(this.largePizzaQty>0){
+                    this.largePizzaTotal-=78.99
+                    this.largePizzaQty-=1
+                }
+            },
+            largePizzaQty:0, 
+            smallPizzaTotal:0,
+            buySmallPizza(){
+                this.smallPizzaTotal+=48.99
+                this.smallPizzaQty+=1
+            },
+            dropSmallPizza(){
+                if(this.smallPizzaQty>0){
+                    this.smallPizzaTotal-=48.99
+                    this.smallPizzaQty-=1
+                }
+            },
+            smallPizzaQty:0, 
+            grandTotal(){
+                return this.mediumPizzaTotal + this.largePizzaTotal + this.smallPizzaTotal
+            },
+            totalQty(){
+                return this.largePizzaQty + this.smallPizzaQty + this.mediumPizzaQty
+            },
+            checkOutPayment:false,
+            makePayment(){
+                if(!this.paymentAmount){
+                    this.paymentMessage='No amount entered!'
+                }
+                if(this.paymentAmount>=this.grandTotal()){
+                    this.paymentMessage='Payment Successful!!'
+                    
+                    setTimeout(()=>{
+                        this.checkOutPayment=false
+                        this.clearCart();
+                    },3000)
+                    
+                }else{
+                    this.paymentMessage='Payment Failed!!'
+                }
+            },
+            clearCart(){
+                this.mediumPizzaTotal=0.00,
+                this.largePizzaTotal=0.00,
+                this.smallPizzaTotal=0.00,
+                this.largePizzaQty=0,
+                this.mediumPizzaQty=0,
+                this.smallPizzaQty=0
+            }
+        }">
+        <div class="header">
+            <div class="f3">
+                <h1>Perfect Pizza</h1>
+            </div>
+            <div class="f1">
+                <button x-on:click="showCart=true">
+                    <img src="./pizzaImages/shopping-cart.png" width="30" alt=""> show cart
+                </button>
+            </div>
+        </div>
+        <div class="cart-box">
+            <div class="cart" x-show="showCart">
+                <div>
+                    <button x-on:click="showCart=false">
+                        <img src="./pizzaImages/shopping-cart.png" width="30" alt=""> Close cart
+                    </button>
+                </div>
+                <div class="">
+                    
+                    <strong x-show="totalQty() > 0">
+                        <span x-text="totalQty()">
+                            <h2>Cart
+                                <img src="./pizzaImages/shopping-cart.png" width="30" alt="">
+                            </h2>
+                        </span> item(s) in the cart.
+                    </strong>
+                </div>
+                <table>
+					<tr x-show="mediumPizzaQty>0">
+						<td>Medium Pizza</td>
+						<td>
+
+                            <span x-text="mediumPizzaQty"></span>
+
+							<button x-on:click="buyMediumPizza" x-show="mediumPizzaQty>0">+</button>
+							<button x-on:click="dropMediumPizza" x-show="mediumPizzaQty>0">-</button>
+						</td>
+						<td>
+                            R<span x-text="mediumPizzaTotal.toFixed(2)"></span>
+                        </td>
+					</tr>
+					<tr x-show="largePizzaQty>0">
+						<td>Large Pizza</td>
+						<td>
+
+                            <span x-text="largePizzaQty"></span>
+
+							<button x-on:click="buyLargePizza" x-show="largePizzaQty>0">+</button>
+							<button x-on:click="dropLargePizza" x-show="largePizzaQty>0">-</button>
+						</td>
+						<td>
+                            R<span x-text="largePizzaTotal.toFixed(2)"></span>
+                        </td>
+					</tr>
+					<tr x-show="smallPizzaQty>0">
+						<td>Small Pizza</td>
+						<td>
+
+                            <span x-text="smallPizzaQty"></span>
+
+							<button x-on:click="buySmallPizza" x-show="smallPizzaQty>0">+</button>
+							<button x-on:click="dropSmallPizza" x-show="smallPizzaQty>0">-</button>
+						</td>
+						<td>
+                            R<span x-text="smallPizzaTotal.toFixed(2)"></span>
+                        </td>
+					</tr>
+					<tr x-show="grandTotal()>0">
+						<td colspan="2">Total</td>
+						<td>
+                            R<span x-text="grandTotal().toFixed(2)"></span>
+                        </td>
+					</tr>
+					<tr ">
+						<td colspan="2">
+                            <div x-show="checkOutPayment">
+							    <div class="message" x-text="paymentMessage"></div>
+							    <div>
+								    <label for="">Payment amount</label>
+								    <input class="input" type="number" placeholder="Payment amount" x-model="paymentAmount">
+                                    <button  x-on:click="makePayment" class="btn" >
+                                        <img src="./images/shopping-cart.png" width="20" alt="">
+                                    Pay Now</button>
+							    </div>
+                                <div>
+                                    
+                                </div>
+                            </div>
+						</td>
+						<td>
+							<button x-show="!checkOutPayment" x-on:click="checkOutPayment=true" class="btn" >
+								<img src="./images/shopping-cart.png" width="20" alt="">
+							Check-Out</button>
+						</td>
+					</tr>
+				</table>
+            </div>
+        </div>
+        <div class="pizzas">
+            <div class="medium-pizza pizza">
+                <img src="./pizzaImages/pizza.png" alt="">
+                <h2>Medium Pizza</h2>
+                <h2>R68.99</h2>
+                <form action="finalPage.html">
+                    <label for="pizza-base">Choose your Base</label>
+                    <select name="pizza-base" id="pizza-base">
+                        <option value="selector">--CHOOSE-YOUR-BASE--</option>
+                        <option value="thin_crispy">Thin & Crispy</option>
+                        <option value="double_stack">Double-Stack</option>
+                        <option value="crammed_crust">Crammed-Crust</option>
+                    </select>
+                    <p>PREFFERED PIZZA</p>
+                    <input type="radio" name="pizza-type" id="standard">
+                    <label for="pizza-type">Standard Pizza</label>
+                    <input type="radio" name="pizza-type" id="halaal">
+                    <label for="pizza-type">Halaal</label>
+                    <div>
+                        <p>Extra Toppings</p>
+                        <div>
+                            <input type="checkbox" name="extra-toppings" id="extra1">
+                            <label for="extra1">Onions</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="extra-toppings" id="extra2">
+                            <label for="extra2">Mushrooms</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="extra-toppings" id="extra3">
+                            <label for="extra3">BBQ Sauce</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="extra-toppings" id="extra4">
+                            <label for="extra4">Green Paper</label>
+                        </div>
+                    </div>
+                    <P></P>
+                    <div>
+                        <label for="donater5">
+                            <strong>
+                                Would you like to donate R5.00 for HOPE?
+                            </strong>
+                        </label>
+                        <div>
+                            <input type="checkbox" name="donater5" id="donater5Yes">
+                            <label for="donater5">YES</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="donater5" id="donater5No">
+                            <label for="donater5">No</label>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center;">
+                        <!-- <button class="btn">Place Your Order</button> -->
+                    </div>
+                </form>
+                <button class="btn" x-on:click="buyMediumPizza()">ADD TO CART</button>
+            </div>
+            <div class="large-pizza pizza">
+                <img src="./pizzaImages/pizza.png" alt="">
+                <h2>Large Pizza</h2>
+                <h2>R78.99</h2>
+                <form action="finalPage.html">
+                    <label for="pizza-base">Choose your Base</label>
+                    <select name="pizza-base" id="pizza-base">
+                        <option value="selector">--CHOOSE-YOUR-BASE--</option>
+                        <option value="thin_crispy">Thin & Crispy</option>
+                        <option value="double_stack">Double-Stack</option>
+                        <option value="crammed_crust">Crammed-Crust</option>
+                    </select>
+                    <p>PREFFERED PIZZA</p>
+                    <input type="radio" name="pizza-type" id="standard">
+                    <label for="pizza-type">Standard Pizza</label>
+                    <input type="radio" name="pizza-type" id="halaal">
+                    <label for="pizza-type">Halaal</label>
+                    <div>
+                        <p>Extra Toppings</p>
+                        <div>
+                            <input type="checkbox" name="extra-toppings" id="extra1">
+                            <label for="extra1">Onions</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="extra-toppings" id="extra2">
+                            <label for="extra2">Mushrooms</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="extra-toppings" id="extra3">
+                            <label for="extra3">BBQ Sauce</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="extra-toppings" id="extra4">
+                            <label for="extra4">Green Paper</label>
+                        </div>
+                    </div>
+                    <P></P>
+                    <div>
+                        <label for="donater5">
+                            <strong>Would you like to donate R5.00 for HOPE?</strong>
+                        </label>
+                        <div>
+                            <input type="checkbox" name="donater5" id="donater5Yes">
+                            <label for="donater5">YES</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="donater5" id="donater5No">
+                            <label for="donater5">No</label>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <!-- <button class="btn">Place Your Order</button> -->
+                    </div>
+                </form>
+                <button class="btn" x-on:click="largePizzaTotal+=78.99, largePizzaQty+=1">ADD TO CART</button>
+            </div>
+            <div class="small-pizza pizza">
+                <img src="./pizzaImages/pizza.png" alt="">
+                <h2>Small Pizza</h2>
+                <h2>R48.99</h2>
+                <form action="finalPage.html">
+                    <label for="pizza-base">Choose your Base</label>
+                    <select name="pizza-base" id="pizza-base">
+                        <option value="selector">--CHOOSE-YOUR-BASE--</option>
+                        <option value="thin_crispy">Thin & Crispy</option>
+                        <option value="double_stack">Double-Stack</option>
+                        <option value="crammed_crust">Crammed-Crust</option>
+                    </select>
+                    <p>PREFFERED PIZZA</p>
+                    <input type="radio" name="pizza-type" id="standard">
+                    <label for="pizza-type">Standard Pizza</label>
+                    <input type="radio" name="pizza-type" id="halaal">
+                    <label for="pizza-type">Halaal</label>
+                    <div>
+                        <p>Extra Toppings</p>
+                        <div>
+                            <input type="checkbox" name="extra-toppings" id="extra1">
+                            <label for="extra1">Onions</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="extra-toppings" id="extra2">
+                            <label for="extra2">Mushrooms</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="extra-toppings" id="extra3">
+                            <label for="extra3">BBQ Sauce</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="extra-toppings" id="extra4">
+                            <label for="extra4">Green Paper</label>
+                        </div>
+                        
+                    </div>
+                    <P></P>
+                    <div>
+                        <label for="donater5">
+                            <strong>Would you like to donate R5.00 for HOPE?</strong>
+                        </label>
+                        <div>
+                            <input type="checkbox" name="donater5" id="donater5Yes">
+                            <label for="donater5">YES</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="donater5" id="donater5No">
+                            <label for="donater5">No</label>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center;">
+                        <!-- <button class="btn">Place Your Order</button> -->
+                    </div>
+                </form>
+                <button class="btn" x-on:click="smallPizzaTotal+=48.99, smallPizzaQty+=1">ADD TO CART</button>
+
+            </div>
+        </div>
+        <div class="footer">
+            <div class="contacts">
+                <h3>Contact us @ 05050360442</h3>
+                <a href="#">pizza@pizzapamphet.com</a>
+            </div>
+            <div class="contact-address" style="margin-left:65em ;">
+                <address >
+                    visit us at:<br>
+                    123 Pizza Plaza<br>
+                    Dough Road
+                    Base Town
+                </address>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
