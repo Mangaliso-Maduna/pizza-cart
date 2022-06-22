@@ -113,7 +113,7 @@
                 </div>
                 <table>
 					<tr x-show="mediumPizzaQty>0">
-						<td>Medium Pizza</td>
+						<td>MEATY CRAM-DECKER</td>
 						<td>
 
                             <span x-text="mediumPizzaQty"></span>
@@ -126,7 +126,7 @@
                         </td>
 					</tr>
 					<tr x-show="largePizzaQty>0">
-						<td>Large Pizza</td>
+						<td>CHICKEN CRAM-DECKER</td>
 						<td>
 
                             <span x-text="largePizzaQty"></span>
@@ -139,7 +139,7 @@
                         </td>
 					</tr>
 					<tr x-show="smallPizzaQty>0">
-						<td>Small Pizza</td>
+						<td>SWEET CHILLI CHICKEN TRIPLE-DECKER</td>
 						<td>
 
                             <span x-text="smallPizzaQty"></span>
@@ -185,179 +185,41 @@
         <div class="pizzas">
             <div class="medium-pizza pizza">
                 <img src="./pizzaImages/pizza.png" alt="">
-                <h2>Medium Pizza</h2>
+                <h2>MEATY CRAM-DECKER</h2>
                 <h2>R68.99</h2>
-                <form action="finalPage.html">
-                    <label for="pizza-base">Choose your Base</label>
-                    <select name="pizza-base" id="pizza-base">
-                        <option value="selector">--CHOOSE-YOUR-BASE--</option>
-                        <option value="thin_crispy">Thin & Crispy</option>
-                        <option value="double_stack">Double-Stack</option>
-                        <option value="crammed_crust">Crammed-Crust</option>
-                    </select>
-                    <p>PREFFERED PIZZA</p>
-                    <input type="radio" name="pizza-type" id="standard">
-                    <label for="pizza-type">Standard Pizza</label>
-                    <input type="radio" name="pizza-type" id="halaal">
-                    <label for="pizza-type">Halaal</label>
-                    <div>
-                        <p>Extra Toppings</p>
-                        <div>
-                            <input type="checkbox" name="extra-toppings" id="extra1">
-                            <label for="extra1">Onions</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" name="extra-toppings" id="extra2">
-                            <label for="extra2">Mushrooms</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" name="extra-toppings" id="extra3">
-                            <label for="extra3">BBQ Sauce</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" name="extra-toppings" id="extra4">
-                            <label for="extra4">Green Paper</label>
-                        </div>
-                    </div>
-                    <P></P>
-                    <div>
-                        <label for="donater5">
-                            <strong>
-                                Would you like to donate R5.00 for HOPE?
-                            </strong>
-                        </label>
-                        <div>
-                            <input type="checkbox" name="donater5" id="donater5Yes">
-                            <label for="donater5">YES</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" name="donater5" id="donater5No">
-                            <label for="donater5">No</label>
-                        </div>
-                    </div>
-
-                    <div style="text-align: center;">
-                        <!-- <button class="btn">Place Your Order</button> -->
-                    </div>
-                </form>
+                <p class="desc">
+                    Three layers, three cheeses & a crust crammed with two chicken
+                    cheese grillers: our secret cream cheese, ham, spare rib, onion,
+                    tomato & herb pizza sauce, BBQ sauce, Johny's sauce, cheddar &
+                    mozzarella cheese
+                </p>
                 <button class="btn" x-on:click="buyMediumPizza()">ADD TO CART</button>
             </div>
             <div class="large-pizza pizza">
                 <img src="./pizzaImages/pizza.png" alt="">
-                <h2>Large Pizza</h2>
-                <h2>R78.99</h2>
-                <form action="finalPage.html">
-                    <label for="pizza-base">Choose your Base</label>
-                    <select name="pizza-base" id="pizza-base">
-                        <option value="selector">--CHOOSE-YOUR-BASE--</option>
-                        <option value="thin_crispy">Thin & Crispy</option>
-                        <option value="double_stack">Double-Stack</option>
-                        <option value="crammed_crust">Crammed-Crust</option>
-                    </select>
-                    <p>PREFFERED PIZZA</p>
-                    <input type="radio" name="pizza-type" id="standard">
-                    <label for="pizza-type">Standard Pizza</label>
-                    <input type="radio" name="pizza-type" id="halaal">
-                    <label for="pizza-type">Halaal</label>
-                    <div>
-                        <p>Extra Toppings</p>
-                        <div>
-                            <input type="checkbox" name="extra-toppings" id="extra1">
-                            <label for="extra1">Onions</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" name="extra-toppings" id="extra2">
-                            <label for="extra2">Mushrooms</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" name="extra-toppings" id="extra3">
-                            <label for="extra3">BBQ Sauce</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" name="extra-toppings" id="extra4">
-                            <label for="extra4">Green Paper</label>
-                        </div>
-                    </div>
-                    <P></P>
-                    <div>
-                        <label for="donater5">
-                            <strong>Would you like to donate R5.00 for HOPE?</strong>
-                        </label>
-                        <div>
-                            <input type="checkbox" name="donater5" id="donater5Yes">
-                            <label for="donater5">YES</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" name="donater5" id="donater5No">
-                            <label for="donater5">No</label>
-                        </div>
-                    </div>
-                    
-                    <div style="text-align: center;">
-                        <!-- <button class="btn">Place Your Order</button> -->
-                    </div>
-                </form>
+                <h2>CHICKEN CRAM-DECKER</h2>
+                <h2>R109.99</h2>
+                <p>
+                    Three layers, three cheeses & a crust crammed with two chicken
+                    cheese grillers: our secret cream cheese, ham, spare rib, onion,
+                    tomato & herb pizza sauce, BBQ sauce, Johny's sauce, cheddar &
+                    mozzarella cheese
+                </p>
                 <button class="btn" x-on:click="largePizzaTotal+=78.99, largePizzaQty+=1">ADD TO CART</button>
             </div>
             <div class="small-pizza pizza">
                 <img src="./pizzaImages/pizza.png" alt="">
-                <h2>Small Pizza</h2>
+                <h2>SWEET CHILLI CHICKEN TRIPLE-DECKER</h2>
                 <h2>R48.99</h2>
-                <form action="finalPage.html">
-                    <label for="pizza-base">Choose your Base</label>
-                    <select name="pizza-base" id="pizza-base">
-                        <option value="selector">--CHOOSE-YOUR-BASE--</option>
-                        <option value="thin_crispy">Thin & Crispy</option>
-                        <option value="double_stack">Double-Stack</option>
-                        <option value="crammed_crust">Crammed-Crust</option>
-                    </select>
-                    <p>PREFFERED PIZZA</p>
-                    <input type="radio" name="pizza-type" id="standard">
-                    <label for="pizza-type">Standard Pizza</label>
-                    <input type="radio" name="pizza-type" id="halaal">
-                    <label for="pizza-type">Halaal</label>
-                    <div>
-                        <p>Extra Toppings</p>
-                        <div>
-                            <input type="checkbox" name="extra-toppings" id="extra1">
-                            <label for="extra1">Onions</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" name="extra-toppings" id="extra2">
-                            <label for="extra2">Mushrooms</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" name="extra-toppings" id="extra3">
-                            <label for="extra3">BBQ Sauce</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" name="extra-toppings" id="extra4">
-                            <label for="extra4">Green Paper</label>
-                        </div>
-                        
-                    </div>
-                    <P></P>
-                    <div>
-                        <label for="donater5">
-                            <strong>Would you like to donate R5.00 for HOPE?</strong>
-                        </label>
-                        <div>
-                            <input type="checkbox" name="donater5" id="donater5Yes">
-                            <label for="donater5">YES</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" name="donater5" id="donater5No">
-                            <label for="donater5">No</label>
-                        </div>
-                    </div>
-
-                    <div style="text-align: center;">
-                        <!-- <button class="btn">Place Your Order</button> -->
-                    </div>
-                </form>
+                <p>
+                    Three layers, three cheeses & a crust crammed with two chicken
+                    cheese grillers: our secret cream cheese, ham, spare rib, onion,
+                    tomato & herb pizza sauce, BBQ sauce, Johny's sauce, cheddar &
+                    mozzarella cheese
+                </p>
                 <button class="btn" x-on:click="smallPizzaTotal+=48.99, smallPizzaQty+=1">ADD TO CART</button>
-
             </div>
+            
         </div>
         <div class="footer">
             <div class="contacts">

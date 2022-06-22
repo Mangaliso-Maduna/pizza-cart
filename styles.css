@@ -27,13 +27,13 @@ body{
 }
 
 .large-pizza img{
-    width: 80%;
+    width: 50%;
 }
 .medium-pizza img{
     width: 50%;
 }
 .small-pizza img{
-    width: 30%;
+    width: 50%;
 }
 h1{
     text-transform: uppercase;
