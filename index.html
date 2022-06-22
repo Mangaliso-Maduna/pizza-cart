@@ -17,12 +17,12 @@
             paymentMessage:'',
             mediumPizzaTotal:0.00,
             buyMediumPizza(){
-                this.mediumPizzaTotal+=68.99
+                this.mediumPizzaTotal+=78.99
                 this.mediumPizzaQty+=1
             },
             dropMediumPizza(){
                 if(this.mediumPizzaQty>0){
-                    this.mediumPizzaTotal-=68.99
+                    this.mediumPizzaTotal-=78.99
                     this.mediumPizzaQty-=1
                 }
                 
@@ -30,24 +30,24 @@
             mediumPizzaQty:0,
             largePizzaTotal:0.00,
             buyLargePizza(){
-                this.largePizzaTotal+=78.99
+                this.largePizzaTotal+=109.99
                 this.largePizzaQty+=1
             },
             dropLargePizza(){
                 if(this.largePizzaQty>0){
-                    this.largePizzaTotal-=78.99
+                    this.largePizzaTotal-=109.99
                     this.largePizzaQty-=1
                 }
             },
             largePizzaQty:0, 
             smallPizzaTotal:0,
             buySmallPizza(){
-                this.smallPizzaTotal+=48.99
+                this.smallPizzaTotal+=86.49
                 this.smallPizzaQty+=1
             },
             dropSmallPizza(){
                 if(this.smallPizzaQty>0){
-                    this.smallPizzaTotal-=48.99
+                    this.smallPizzaTotal-=86.49
                     this.smallPizzaQty-=1
                 }
             },
@@ -186,7 +186,7 @@
             <div class="medium-pizza pizza">
                 <img src="./pizzaImages/pizza.png" alt="">
                 <h2>MEATY CRAM-DECKER</h2>
-                <h2>R68.99</h2>
+                <h2>R78.99</h2>
                 <p class="desc">
                     Three layers, three cheeses & a crust crammed with two chicken
                     cheese grillers: our secret cream cheese, ham, spare rib, onion,
@@ -205,19 +205,19 @@
                     tomato & herb pizza sauce, BBQ sauce, Johny's sauce, cheddar &
                     mozzarella cheese
                 </p>
-                <button class="btn" x-on:click="largePizzaTotal+=78.99, largePizzaQty+=1">ADD TO CART</button>
+                <button class="btn" x-on:click="largePizzaTotal+=109.99, largePizzaQty+=1">ADD TO CART</button>
             </div>
             <div class="small-pizza pizza">
                 <img src="./pizzaImages/pizza.png" alt="">
                 <h2>SWEET CHILLI CHICKEN TRIPLE-DECKER</h2>
-                <h2>R48.99</h2>
+                <h2>R86.49</h2>
                 <p>
                     Three layers, three cheeses & a crust crammed with two chicken
                     cheese grillers: our secret cream cheese, ham, spare rib, onion,
                     tomato & herb pizza sauce, BBQ sauce, Johny's sauce, cheddar &
                     mozzarella cheese
                 </p>
-                <button class="btn" x-on:click="smallPizzaTotal+=48.99, smallPizzaQty+=1">ADD TO CART</button>
+                <button class="btn" x-on:click="smallPizzaTotal+=86.49, smallPizzaQty+=1">ADD TO CART</button>
             </div>
             
         </div>
