@@ -174,7 +174,7 @@
                             </div>
 						</td>
 						<td>
-							<button x-show="!checkOutPayment" x-on:click="checkOutPayment=true" class="btn" >
+							<button x-show="grandTotal()>0" x-on:click="checkOutPayment=true" class="btn" >
 								<img src="./images/shopping-cart.png" width="20" alt="">
 							Check-Out</button>
 						</td>
